@@ -29,6 +29,7 @@ class Drawable:
     def move(self, delta: pygame.Vector2) -> None:
         # Change our position
         self.pos += delta
+        self.rect.move_ip(delta)
 
 
 class Camera:
@@ -59,6 +60,7 @@ class Camera:
         self.rect.move_ip(delta)
 
     def draw(self) -> None:
+        self.screen.fill(pygame.Color('black'))
         for drawable in self.drawables:
             # this is our transform function
             screen_rect = drawable.rect.move(self.pos)
